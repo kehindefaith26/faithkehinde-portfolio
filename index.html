@@ -284,10 +284,6 @@
         <div class="gallery g-1">
           <article class="proj-card" onclick="openModal('floating')" tabindex="0" aria-label="Floating Island project">
             <div class="proj-thumb">
-              <!--
-                ADD YOUR IMAGE: replace src="" with your image path e.g. src="images/floating-island.jpg"
-                The placeholder below shows automatically if the image is missing.
-              -->
               <img src="floating-island.png" alt="Floating Island XR project" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
               <div class="ph ph-xr" style="display:none">
                 <span class="ph-icon">📁</span>
@@ -443,9 +439,8 @@
         <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
       </div>
       <div class="modal-demo" id="modal-demo-el">
-          <video id="modal-video-element" controls style="display:none; width:100%; height:100%; object-fit:contain;"></video>
-          <div class="play-btn" aria-hidden="true"></div>
-          <div class="demo-label" id="modal-demo-label">Video / Demo coming soon</div>
+        <div class="play-btn" aria-hidden="true">▶</div>
+        <div class="demo-label" id="modal-demo-label">Video / Demo coming soon</div>
       </div>
       <div class="modal-body">
         <div class="modal-grid">
@@ -462,7 +457,7 @@
     const PROJECTS = {
       floating: {
         cat: 'XR / Unity', title: 'Floating Island',
-        videoUrl: 'Overview.mp4', 
+        videoUrl: 'https://youtu.be/M8Lpg-kBJBY',
         stack: ['Unity (URP)','C#','Blender','Sketchfab Assets'],
         stackClass: ['grape','grape','',''],
         features: [
@@ -479,7 +474,7 @@
       },
       reverie: {
         cat: 'Front End / React', title: 'Reverie',
-        videoUrl: 'Reverie overview.mp4',
+        videoUrl: 'https://youtu.be/ULu9cV0tZLE',
         stack: ['React','Vite','Tailwind CSS','Framer Motion'],
         stackClass: ['grape','grape','',''],
         features: [
@@ -495,7 +490,7 @@
       },
       vidora: {
         cat: 'Front End / Next.js', title: 'Vidora',
-        videoUrl: 'Vidora overview.mp4',
+        videoUrl: 'https://youtu.be/FzvulDH-z18',
         stack: ['Next.js','Tailwind CSS','Framer Motion','Shadcn UI'],
         stackClass: ['grape','','','gold'],
         features: [
@@ -516,15 +511,15 @@
       document.getElementById('modal-cat-el').textContent = p.cat;
       document.getElementById('modal-title-el').textContent = p.title;
       const demoEl = document.getElementById('modal-demo-el');
-    if (p.videoUrl) {
-        const videoTag = document.getElementById('modal-video-element');
-        videoTag.src = p.videoUrl;
-        videoTag.style.display = 'block';
-        demoEl.querySelector('.play-btn').style.display = 'none';
-        demoEl.querySelector('.demo-label').style.display = 'none';
-    } else {
+      const demoLabel = document.getElementById('modal-demo-label');
+      if (p.videoUrl) {
+        demoEl.classList.add('clickable');
+        demoLabel.textContent = 'Click to watch on YouTube ↗';
+        demoEl.onclick = () => window.open(p.videoUrl, '_blank');
+      } else {
         demoEl.classList.remove('clickable');
         demoEl.onclick = null;
+        demoLabel.textContent = 'Video / Demo coming soon';
       }
       document.getElementById('modal-stack-el').innerHTML = p.stack.map((t,i) => `<span class="tag ${p.stackClass[i]||''}">${t}</span>`).join('');
       document.getElementById('modal-features-el').innerHTML = p.features.map(f => `<div class="feature-item"><span class="feature-dot"></span><span>${f}</span></div>`).join('');
