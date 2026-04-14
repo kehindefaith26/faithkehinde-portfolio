@@ -125,17 +125,16 @@
     .proj-link:hover { background:var(--grape-gl); border-color:var(--grape); transform:translateY(-1px); }
 
     /* MODAL */
-    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:800; display:flex; align-items:flex-start; justify-content:center; padding:24px; padding-top:max(24px, env(safe-area-inset-top, 24px)); overflow-y:auto; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:800; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity 0.25s; }
     .modal-backdrop.open { opacity:1; pointer-events:all; }
-    .modal { background:var(--bg2); border:1px solid var(--border2); border-radius:var(--r-xl); width:100%; max-width:740px; overflow-y:auto; transform:translateY(20px) scale(0.97); transition:transform 0.25s ease; margin:auto; }
+    .modal { background:var(--bg2); border:1px solid var(--border2); border-radius:var(--r-xl); width:100%; max-width:740px; max-height:90vh; overflow-y:auto; transform:translateY(20px) scale(0.97); transition:transform 0.25s ease; }
     .modal-backdrop.open .modal { transform:translateY(0) scale(1); }
-    .modal-header { padding:20px 20px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
-    .modal-close { background:var(--bg3); border:1px solid var(--border2); color:var(--text); width:40px; height:40px; min-width:40px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
+    .modal-header { padding:28px 28px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; }
+    .modal-close { background:var(--bg3); border:1px solid var(--border); color:var(--text2); width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
     .modal-cat { font-family:var(--mono); font-size:10px; color:var(--grape); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
     .modal-title { font-size:24px; font-weight:800; }
     .modal-close { background:var(--bg3); border:1px solid var(--border); color:var(--text2); width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
     .modal-close:hover { background:var(--bg5); color:var(--text); }
-    @media(max-width:900px){ .modal-backdrop{padding:16px; padding-top:max(16px, env(safe-area-inset-top, 16px));} .modal{border-radius:var(--r-lg);} .modal-header{padding:16px;} .modal-body{padding:20px;} }
     .modal-demo { height:220px; background:var(--bg3); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
     .modal-demo.clickable { cursor:pointer; }
     .play-btn { width:56px; height:56px; border-radius:50%; background:var(--grape-gl); border:1px solid var(--grape); display:flex; align-items:center; justify-content:center; color:var(--grape); font-size:18px; transition:all 0.2s; }
