@@ -125,15 +125,17 @@
     .proj-link:hover { background:var(--grape-gl); border-color:var(--grape); transform:translateY(-1px); }
 
     /* MODAL */
-    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:800; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:800; display:flex; align-items:flex-start; justify-content:center; padding:24px; padding-top:max(24px, env(safe-area-inset-top, 24px)); overflow-y:auto; opacity:0; pointer-events:none; transition:opacity 0.25s; }
     .modal-backdrop.open { opacity:1; pointer-events:all; }
-    .modal { background:var(--bg2); border:1px solid var(--border2); border-radius:var(--r-xl); width:100%; max-width:740px; max-height:90vh; overflow-y:auto; transform:translateY(20px) scale(0.97); transition:transform 0.25s ease; }
+    .modal { background:var(--bg2); border:1px solid var(--border2); border-radius:var(--r-xl); width:100%; max-width:740px; overflow-y:auto; transform:translateY(20px) scale(0.97); transition:transform 0.25s ease; margin:auto; }
     .modal-backdrop.open .modal { transform:translateY(0) scale(1); }
-    .modal-header { padding:28px 28px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; }
+    .modal-header { padding:20px 20px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+    .modal-close { background:var(--bg3); border:1px solid var(--border2); color:var(--text); width:40px; height:40px; min-width:40px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
     .modal-cat { font-family:var(--mono); font-size:10px; color:var(--grape); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
     .modal-title { font-size:24px; font-weight:800; }
     .modal-close { background:var(--bg3); border:1px solid var(--border); color:var(--text2); width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
     .modal-close:hover { background:var(--bg5); color:var(--text); }
+    @media(max-width:900px){ .modal-backdrop{padding:16px; padding-top:max(16px, env(safe-area-inset-top, 16px));} .modal{border-radius:var(--r-lg);} .modal-header{padding:16px;} .modal-body{padding:20px;} }
     .modal-demo { height:220px; background:var(--bg3); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
     .modal-demo.clickable { cursor:pointer; }
     .play-btn { width:56px; height:56px; border-radius:50%; background:var(--grape-gl); border:1px solid var(--grape); display:flex; align-items:center; justify-content:center; color:var(--grape); font-size:18px; transition:all 0.2s; }
@@ -408,11 +410,11 @@
       <h2 class="footer-head">Have a project<br><span class="accent">in mind?</span></h2>
       <p class="footer-sub">Open to XR, front end, and design collaboration.<br>Let's build something worth remembering.</p>
       <div class="footer-actions">
-        <a class="btn-primary" href="mailto:faithkehinde26@gmail.com">
+        <a class="btn-primary" href="/cdn-cgi/l/email-protection#2543444c514d4e404d4c4b41401713654248444c490b464a48">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
-          faithkehinde26@gmail.com
+          <span class="__cf_email__" data-cfemail="f395929a879b98969b9a9d9796c1c5b3949e929a9fdd909c9e">[email&#160;protected]</span>
         </a>
-        <a class="btn-secondary" href="mailto:faithkehinde26@gmail.com?subject=Collaboration%20Inquiry">
+        <a class="btn-secondary" href="/cdn-cgi/l/email-protection#8aecebe3fee2e1efe2e3e4eeefb8bccaede7ebe3e6a4e9e5e7b5f9ffe8e0efe9feb7c9e5e6e6ebe8e5f8ebfee3e5e4afb8bac3e4fbffe3f8f3">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Inquiry / Collaboration
         </a>
@@ -453,7 +455,7 @@
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const PROJECTS = {
       floating: {
         cat: 'XR / Unity', title: 'Floating Island',
@@ -567,12 +569,4 @@
       a.addEventListener('click', () => { document.querySelector('.nav-links').style.cssText = ''; });
     });
     const secs = document.querySelectorAll('section[id]');
-    const nls = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let cur = '';
-      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
-      nls.forEach(a => { a.style.color = a.getAttribute('href')==='#'+cur ? 'var(--text)' : ''; });
-    }, { passive:true });
-  </script>
-</body>
-</html>
+    const nls = document.query
